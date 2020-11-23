@@ -1,0 +1,2 @@
+node app = Start server
+ctrl + C = EXIT server

@@ -1,0 +1,100 @@
+NOTE :
+- Test with postman
+- Body dalam format JSON
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+REGISTER : post
+note : email, username, phone can not duplicated and not null
+localhost:3003/user/register
+{
+    "userid":"eve",
+    "username":"eve",
+    "password":"eve",
+    "email":"eve@gmail.com",
+    "phone":"0118129qq1167896"
+
+}
+
+
+UPDATE PROFILE : Post
+//masih mw dibetulin di bagian update ke username,phone,.. yg sama
+localhost:3003/user/(userID)
+{
+    "username":"testing",
+    "password":"testing",
+    "email":"testing",
+    "phone":"777"
+}
+
+
+
+LOGIN: get
+localhost:3003/user/login
+{
+    "userid":"Evalius",
+    "password":"Evalius"
+}
+
+
+
+Bikin Schedule post
+localhost:3003/schedule/InsertSchedule
+{
+    "assignmentid" :"5f6f852228e3f0314d21cdf1",
+    "ownerid" :"evalius",
+    "userid" : "lala",
+    "category":"project",
+    "price":"500000"
+}
+
+
+Edit Schedule put
+NOTE : bisa buat edit stats,review,price
+localhost:3003/schedule/UpdateSchedule
+{
+    "id":"5fb24bedeafd221e70c62927",
+    "status":1,
+    "review":false,
+    "price":100  
+}
+
+
+ViewSchedule List (Project & Services) get
+localhost:3003/schedule/viewschedule
+{
+    "userid":"lala"
+}
+
+
+Insert Project (Post)
+localhost:3003/project/InsertProject
+{
+            "ownerid":"stellzz",
+            "category":"Project",
+            "name":"create Animation",
+            "pricemin":100000,
+            "pricemax":500000,
+            "deadline":"7-30-2021" ,
+            "duration":"7",
+            "remarks":"animation 2D ataupun 3D dijamin hasil bakalan oke deh"  
+}
+
+
+Edit Project(PUT)
+localhost:3003/project/UpdateProject
+{
+            "id":"5fb7dcffd77b2d2f28ab5c99",
+            "name":"FE Website Development",
+            "pricemin":200000,
+            "pricemax":500000,
+            "deadline":"8-30-2021" ,
+            "duration":"14",
+            "remarks":"dricari FE berpengalaman 3 year Experience dalam membangun Website Olshop"  
+}
+
+
+Delete Project (DELETE)
+localhost:3003/project/DeleteProject
+{
+            "id":"5fb7dcffd77b2d2f28ab5c99a"
+}
