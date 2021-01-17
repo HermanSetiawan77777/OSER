@@ -1,13 +1,13 @@
+const express = require("express")
 var https = require('https');
 var fs = require('fs');
-const express = require("express")
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 require('dotenv/config')
-let key = fs.readFileSync('server.key');
-let cert = fs.readFileSync('server.cert');
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+
+
+
 // Middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -28,23 +28,12 @@ const licenseRoute =require('./routes/ms_portofolio')
 const getfiles =require('./routes/ms_file')
 var cors = require('cors');
 
-app.use((req, res, next) => {
-  // enable CORS
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    req.headers['access-control-request-headers']
-  );
 
-  next();
-});
-
-//Enable CORS Pre-Flight
-app.options('*', cors());
 //routes sample
 app.use(
-    cors()
+    cors({
+      origin: '*',
+    })
   );
 app.use('/user',userRoutes)
 //app.use('/authJWT/',authJWTRoutes)
@@ -70,6 +59,6 @@ db.once('open',()=>{
 })
 
 //listen
-https.createServer({ cert: cert, key: key }, app).listen(process.env.PORT,()=>{
+app.listen(process.env.PORT,()=>{
     console.log('server running ini',process.env.PORT)
 })
